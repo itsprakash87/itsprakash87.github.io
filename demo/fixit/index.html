@@ -9,167 +9,98 @@
         
         <script type="text/javascript">
             $(document).ready(function () {
-                $( "#header" ).fixit({topMargin:0,   addClassAfter : "addhead",sameDimension : true, zIndex : 100});
-                $("#fixthis1").fixit({topMargin:60,  addClassAfter : "addfix1",sameDimension : true, zIndex : 100});
-                $("#fixthis2").fixit({topMargin:60,  addClassAfter : "addfix2",sameDimension : true, zIndex : 100});
-                $("#fixthis3").fixit({topMargin:60,  addClassAfter : "addfix3",sameDimension : true, zIndex : 100});
-                $("#fixthis4").fixit({topMargin:60,  addClassAfter : "addfix4",sameDimension : true, zIndex : 100});
+                $(this).scrollTop(0);
+                var color = "black";
+                var margins = [72, 144, 216, 288, 360, 432, 504, 576];
+
+                for(var i = 0;i < 64;i++){
+                    var elem = "<div id='"+(i)+"' class='"+color+" common col"+((i%8) + 1)+"' ></div>";
+                    var margin = margins[parseInt(i/8)];
+
+                    $( "#main" ).append( elem );
+                    color = (i+1)%8 !== 0 ? (color === "white" ? "black" : "white") : color;
+                    $("#"+i).fixit({topMargin: margin, sameDimension : true, zIndex : 100});
+                }
             });
         </script>
 
         <style type="text/css">
             body{
                 margin: 0;
-                background-color: #E0E0E0  ;
+                overflow: auto;
+                background-color: #2D234B ;
             }
             .header{
                 width: 100%;
-                height: 10%;
-                text-align: center;
-                background-color: #00CC66;
-                color: white;
-                box-sizing: border-box;
-            }
-            .content1 ,.content2, .content3, .content4{
-                margin: 20% 0;
-                width: 100%;
-                height: 80%;
-                box-sizing: border-box;
-            }
-            .content1{margin-left: 0%;}
-            .content2{margin-left: 25%;}
-            .content3{margin-left: 50%;}
-            .content4{margin-left: 75%;}
-
-            .inner1 ,.inner2 ,.inner3, .inner4{
-                width: 25%;
-                height: 100%;
-                text-align: center;
-                border-right : 1px solid black;
-                float: left;
-                color: white;
-                background-color: #0099FF;
-                box-sizing: border-box;
-            }
-            .inner1{background-color: #0099FF;}
-            .inner1:hover{background-color: #0099CC;}
-            .inner2{background-color: #FF0033;}
-            .inner2:hover{background-color: #FF0066;}
-            .inner3{background-color: #9966CC;}
-            .inner3:hover{background-color: #9966FF;}
-            .inner4{background-color: #330033;}
-            .inner4:hover{background-color: #585858;}
-
-            .maincontent{
-                margin: 60% 20%;
-                width: 50%;
-                height: 50%;
-            }
-            .footer{
+                height: 72px;
                 position: fixed;
-                bottom: 0;
-                width: 100%;
-                height: 10%;
-                z-index: 200;
-                color: white;
-                background-color: #00CC66;
-                box-sizing: border-box;
                 text-align: center;
+                background-color: #DF3329;
+                color: #F2F2F5;
+                box-sizing: border-box;
             }
-            input{
+            .container{
                 width: 100%;
-                height: 100%;
-                background-color: #00CC66;
-                border: none;
-                color: white;
-                font-size: 20px;
-                line-height: 100%;
-                cursor: pointer;
+                text-align: center;
+                overflow: hidden;
             }
-            input:hover{
-                background-color: #00CC00;
+            .main{
+                z-index: 1;
+                overflow: hidden;
+                margin: auto;
+                width: 576px;
+            }
+            .black{
+                background: #000000;
+            }
+            .white{
+                background: #ffffff;
+            }
+            .common{
+                width: 72px; 
+                height: 72px; 
+                margin-top: 0px;
+                box-sizing:border-box;
+            }
+            .col1{
+                margin-left:0px;
+            }
+            .col2{
+                margin-left:72px;
+            }
+            .col3{
+                margin-left:144px;
+            }
+            .col4{
+                margin-left:216px;
+            }
+            .col5{
+                margin-left:288px;
+            }
+            .col6{
+                margin-left:360px;
+            }
+            .col7{
+                margin-left:432px;
+            }
+            .col8{
+                margin-left:504px;
+            }
+            .spacer{
+                width: 100%;
+                height: 576px;
             }
 
-            .addfix1{
-                left: 0;
-            }
-            .addfix2{
-                left: 25%;
-            }
-            .addfix3{
-                left: 50%;
-            }
-            .addfix4{
-                left: 75%;
-            }
         </style>
     </head>
     <body>
         <div id = "header" class = "header">
             <h2>Scroll Down to See the Effect.</h2>
         </div>
-        <div class = "content1">
-            <div class = "inner1" id = "fixthis1" >
-                <div class = "maincontent">
-                    <h3>This is content.</h3>
-                </div>
-            </div>
-            <div class = "inner1">
-                <div class = "maincontent">
-                    <h3>This is content.</h3>
-                </div>
-            </div>
-            <div class = "inner1">
-                <div class = "maincontent">
-                    <h3>This is content.</h3>
-                </div>
-            </div>
-            <div class = "inner1">
-                <div class = "maincontent">
-                    <h3>This is content.</h3>
-                </div
-            ></div>
-        </div>
-        <div class = "content2">
-            <div class = "inner2"id = "fixthis2">
-                <div class = "maincontent">
-                    <h3>This is content.</h3>
-                </div>
-            </div>
-            <div class = "inner2">
-                <div class = "maincontent">
-                    <h3>This is content.</h3>
-                </div>
-            </div>
-            <div class = "inner2">
-                <div class = "maincontent">
-                    <h3>This is content.</h3>
-                </div>
-            </div>
-        </div>
-        <div class = "content3">
-            <div class = "inner3" id = "fixthis3">
-                <div class = "maincontent">
-                    <h3>This is content.</h3>
-                </div>
-            </div>
-            <div class = "inner3">
-                <div class = "maincontent">
-                    <h3>This is content.</h3>
-                </div>
-            </div>
-        </div>
-        <div class = "content4">
-            <div class = "inner4" id = "fixthis4">
-                <div class = "maincontent">
-                    <h3>This is content.</h3>
-                </div>
-            </div>
-        </div>
-        <a href="https://github.com/itsprakash87/fixit/archive/master.zip">
-            <div id = "footer" class = "footer">
-                <input type = "button" value = "DOWNLOAD">
-            </div>
-        </a>
+        <div id="space" class="spacer"></div>
+        <div class="container">
+            <div id="main" class="main"></div>
+            <div id="space" class="spacer"></div>  
+        </div>                                                                                                                                                                                                                                   
     </body>
 </html>
